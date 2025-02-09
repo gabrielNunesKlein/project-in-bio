@@ -32,16 +32,15 @@ export default function UseCard() {
                     ))}
 
                 </div>
-
-                <div className='flex flex-col gap-3 w-full h-[172px]'>
-                    <div className='w-full flex flex-col items-center gap-3'>
-                        <Button className='w-full'>
-                            Template Saas - Compre Agora
-                        </Button>
-                        <button className='p-3 rounded-xl bg-[#1e1e1e] hover:bg-[#2e2e2e]'>
-                            <Plus />
-                        </button>
-                    </div>
+            </div>
+            <div className='flex flex-col gap-3 w-full h-[172px]'>
+                <div className='w-full flex flex-col items-center gap-3'>
+                    <Button className='w-full'>
+                        Template Saas - Compre Agora
+                    </Button>
+                    <button className='p-3 rounded-xl bg-[#1e1e1e] hover:bg-[#2e2e2e]'>
+                        <Plus />
+                    </button>
                 </div>
             </div>
         </div>
