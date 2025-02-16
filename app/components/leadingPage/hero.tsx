@@ -24,16 +24,16 @@ export default function Hero () {
                 </div>
             </div>
 
-            <div className="w-full flex items-center justify-center bg-[radial-gradient(circle_at_50%_50%,#4B2DBB,transparent_55%)] mt-12">
+            <div className="w-full flex items-center justify-center bg-[radial-gradient(circle_at_50%_50%,#4B2DBB,transparent_55%)] mt-[5vh]">
                 <div className="relative">
                     <UseCard />
                     <div className="absolute -bottom-[7%] -right-[45%]">
                         <TotalVisit />
                     </div>
-                    <div className="absolute top-[40%] -left-[45%] -z-10">
+                    <div className="absolute top-[25%] -left-[45%] -z-10">
                         <ProjectCard />
                     </div>
-                    <div className="absolute top-[10%] -left-[55%] -z-10">
+                    <div className="absolute -top-[5%] -left-[55%] -z-10">
                         <ProjectCard />
                     </div>
                 </div>
