@@ -5,10 +5,9 @@ import { Plus } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react'
 
-export default async function ProfilePage({ params }: { params: { profileId: string }}) {
-    const { profileId }= await params;
+export default async function ProfilePage({ params }: { params: Promise<{ profileId: string }>}) {
+    const { profileId } = await params;
 
-    console.log(profileId)
     return (
         <div className='relative h-screen flex p-20 overflow-hidden'>
             <div className='fixed top-0 left-0 w-full flex justify-center items-center gap-1 py-2 bg-background-tertiary'>
