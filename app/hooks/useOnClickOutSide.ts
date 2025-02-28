@@ -5,24 +5,24 @@ export default function useOnClickOutside(
     handler?: (event: MouseEvent | TouchEvent) => void
 ) {
     useEffect(() => {
-        const listner = (event: MouseEvent | TouchEvent) => {
-            const target = event.target as HTMLElement
-
-            if(!ref.current || ref.current.contains(target)){
-                return
-            }
-
-            if(handler){
-                handler(event)
-            }
-
-            document.addEventListener("mousedown", listner)
-            document.addEventListener("touchstart", listner)
-
-            return () => {
-                document.removeEventListener("mousedown", listner)
-                document.removeEventListener("touchstart", listner)
-            }
-        }
-    }, [])
+        const listener = (event: MouseEvent | TouchEvent) => {
+          const target = event.target as HTMLElement;
+    
+          if (!ref.current || ref.current.contains(target)) {
+            return;
+          }
+          if (handler) {
+            handler(event);
+          }
+        };
+    
+        document.addEventListener("mousedown", listener);
+        document.addEventListener("touchstart", listener);
+    
+        return () => {
+          document.removeEventListener("mousedown", listener);
+          document.removeEventListener("touchstart", listener);
+        };
+        
+      }, []);
 }
