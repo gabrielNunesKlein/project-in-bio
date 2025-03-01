@@ -3,6 +3,8 @@ import Button from '../../ui/button'
 import EditSocialLinks from './edit-social-links'
 import Link from 'next/link'
 import { ProfileData } from '@/app/server/get-profile-data'
+import AddCustomLink from './add-custom-link'
+import { formatUrl } from '@/app/lib/utils'
 
 const defaultSocialMedia = {
     github: "",
@@ -70,14 +72,32 @@ export default function UseCard({ profileData }: { profileData?: ProfileData }) 
             </div>
             <div className='flex flex-col gap-3 w-full h-[172px]'>
                 <div className='w-full flex flex-col items-center gap-3'>
-                    <Button className='w-full'>
-                        Template Saas - Compre Agora
-                    </Button>
-                    <button className='p-3 rounded-xl bg-[#1e1e1e] hover:bg-[#2e2e2e]'>
-                        <Plus />
-                    </button>
+                    {profileData?.link1 && (
+                        <Link href={formatUrl(profileData.link1.url)} target='_blank' className='w-full'>
+                            <Button className='w-full'>
+                                {profileData.link1.title}
+                            </Button>
+                        </Link>
+                    )}
+                    
+                    {profileData?.link2 && (
+                        <Link href={formatUrl(profileData.link2.url)} target='_blank' className='w-full'>
+                            <Button className='w-full'>
+                                {profileData.link2.title}
+                            </Button>
+                        </Link>
+                    )}
+                    
+                    {profileData?.link3 && (
+                        <Link href={formatUrl(profileData.link3.url)} target='_blank' className='w-full'>
+                            <Button className='w-full'>
+                                {profileData.link3.title}
+                            </Button>
+                        </Link>
+                    )}
                 </div>
             </div>
+            <AddCustomLink />
         </div>
     )
 }
