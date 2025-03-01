@@ -1,6 +1,6 @@
 import ProjectCard from "../commons/project-card"
 import TotalVisit from "../commons/total-visit"
-import UseCard from "../commons/user-card"
+import UseCard from "../commons/use-card/user-card"
 import Button from "../ui/button"
 import TextInput from "../ui/text-input"
 

@@ -1,6 +1,6 @@
 import ProjectCard from '@/app/components/commons/project-card';
 import TotalVisit from '@/app/components/commons/total-visit';
-import UseCard from '@/app/components/commons/user-card';
+import UseCard from '@/app/components/commons/use-card/user-card';
 import { auth } from '@/app/lib/auth';
 import { getProfileData, getProjectesPrifile } from '@/app/server/get-profile-data';
 import { Plus } from 'lucide-react';
