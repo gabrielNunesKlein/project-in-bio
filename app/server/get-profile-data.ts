@@ -3,6 +3,9 @@ import { db } from "../lib/firebase"
 import { Link } from "../actions/add-custom-links";
 
 export type ProfileData = {
+    name: string;
+    description: string;
+    imagePath: string;
     userId: string;
     totalVisits: number;
     createAt: number;

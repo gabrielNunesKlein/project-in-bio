@@ -4,7 +4,7 @@ import Button from '@/app/components/ui/button';
 import Modal from '@/app/components/ui/modal'
 import TextArea from '@/app/components/ui/text-area';
 import TextInput from '@/app/components/ui/text-input';
-import { compressFiles } from '@/app/lib/utils';
+import { compressFiles, triggerImageInput } from '@/app/lib/utils';
 import { ArrowUpFromLine, Plus } from 'lucide-react'
 import { useRouter } from 'next/navigation';
 import React, { startTransition, useState } from 'react'
@@ -18,9 +18,9 @@ export default function NewProject({ profileId }: { profileId: string}) {
     const [projectUrl, setProjectUrl] = useState("")
     const [projectImage, setProjectImage] = useState<string | null>(null)
 
-    const triggerImageInput = (id: string) => {
-        document.getElementById(id)?.click()
-    }
+    // const triggerImageInput = (id: string) => {
+    //     document.getElementById(id)?.click()
+    // }
 
     const handleImageInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] ?? null

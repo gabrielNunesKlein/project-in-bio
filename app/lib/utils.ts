@@ -45,3 +45,18 @@ export function formatUrl(url: string) {
   const formattedUrl = url.startsWith("http") ? url : `https://${url}`;
   return formattedUrl;
 }
+
+export const triggerImageInput = (id: string) => {
+  document.getElementById(id)?.click()
+}
+
+export const handleImageInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const file = e.target.files?.[0] ?? null
+  
+  if(file) {
+    const imageUrl = URL.createObjectURL(file)
+    return imageUrl
+  }
+  return null
+
+}
