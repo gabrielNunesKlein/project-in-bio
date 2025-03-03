@@ -65,11 +65,19 @@ export default async function UseCard({ profileData, isOwner }: { profileData?: 
                             <Twitter />
                         </Link>
                     )}
-                    {icons.map((Icon, index) => (
-                        <button key={index} className='p-3 rounded-xl bg-[#1e1e1e] hover:bg-[#2e2e2e]'>
-                            <Icon />
-                    </button>
-                    ))}
+
+                    {!profileData && (
+                        <>
+                            {icons.map((Icon, index) => (
+                                <button key={index} className='p-3 rounded-xl bg-[#1e1e1e] hover:bg-[#2e2e2e]'>
+                                    <Icon />
+                                </button>
+                            ))}
+                            <button className="p-3 rounded-xl bg-[#1E1E1E] hover:bg-[#2E2E2E]">
+                                <Plus />
+                            </button>
+                        </>
+                    )}
                     
                     {isOwner && (
                         <EditSocialLinks socialMedia={profileData?.socialMedia ?? defaultSocialMedia} />
