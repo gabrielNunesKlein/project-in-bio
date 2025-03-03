@@ -1,7 +1,9 @@
 "use client"
 
+import { increaseProjectsVisit } from "@/app/actions/increase-projects-visits";
 import { ProjectData } from "@/app/server/get-profile-data";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 
 
 export default function ProjectCard({
@@ -14,11 +16,16 @@ export default function ProjectCard({
   img: string | undefined
 }) {
 
+  const { profileId } = useParams()
+
   const projectUrl = project.url
   const fomattedUrl = projectUrl.startsWith("http") ? projectUrl : `https://${projectUrl}`
 
-  const handleClick = () => {
-    console.log("CLICK")
+  const handleClick = async () => {
+
+    if(!profileId || !project.id || isOwner) return
+
+    await increaseProjectsVisit(profileId as string, project.id)
   }
 
   return (
@@ -34,7 +41,7 @@ export default function ProjectCard({
         <div className="flex flex-col gap-2">
           {isOwner && (
             <span className="uppercase text-xs font-bold text-accent-green">
-              {project?.totalVisits || 0} cliques
+              {project?.totalVisit || 0} cliques
             </span>
           )}
           <div className="flex flex-col">

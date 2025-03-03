@@ -7,7 +7,7 @@ export type ProfileData = {
     description: string;
     imagePath: string;
     userId: string;
-    totalVisits: number;
+    totalVisit: number;
     createAt: number;
     socialMedia?: {
         github: string;
@@ -29,7 +29,7 @@ export type ProjectData = {
     imagePath: string;
     url: string;
     createdAt: number;
-    totalVisits?: number;
+    totalVisit?: number;
 }
 
 export async function getProfileData(profileId: string){
@@ -41,7 +41,7 @@ export async function getProfileData(profileId: string){
 }
 
 export async function getProjectesPrifile(profileId: string){
-    const spnashot = await db.collection("projects").doc(profileId).collection("projects").get();
+    const spnashot = await db.collection("profiles").doc(profileId).collection("projects").get();
 
     return spnashot.docs.map((doc) => doc.data()) as ProjectData[]
 }

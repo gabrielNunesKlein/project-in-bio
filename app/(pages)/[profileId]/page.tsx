@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation';
 import React from 'react'
 import NewProject from './new-project';
 import { getDownloadUrlFromPath } from '@/app/lib/firebase';
+import { increaseProfileVisits } from '@/app/actions/increase-profile-visits';
 
 export default async function ProfilePage({ params }: { params: Promise<{ profileId: string }>}) {
     const { profileId } = await params;
@@ -21,6 +22,10 @@ export default async function ProfilePage({ params }: { params: Promise<{ profil
 
     const session = await auth()
     const isOwner = profileData.userId === session?.user?.id
+
+    if(!isOwner){
+        await increaseProfileVisits(profileId)
+    }
 
 
     return (
@@ -42,9 +47,11 @@ export default async function ProfilePage({ params }: { params: Promise<{ profil
                     <NewProject profileId={profileId} />
                 )}
             </div>
-            <div className='absolute bottom-4 right-0 left-0 w-min mx-auto'>
-                <TotalVisit />
-            </div>
+            {isOwner && (
+                <div className='absolute bottom-4 right-0 left-0 w-min mx-auto'>
+                    <TotalVisit totalVisit={profileData.totalVisit} />
+                </div>
+            )}
         </div>
     )
 }
