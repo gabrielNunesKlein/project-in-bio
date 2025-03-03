@@ -9,23 +9,27 @@ import { useParams } from "next/navigation";
 export default function ProjectCard({
   project,
   isOwner,
-  img
+  img,
+  name,
+  description,
 }: {
-  project: ProjectData,
-  isOwner: boolean,
-  img: string | undefined
+  project?: ProjectData,
+  isOwner?: boolean,
+  img: string | undefined,
+  name?: string,
+  description?: string
 }) {
 
   const { profileId } = useParams()
 
-  const projectUrl = project.url
-  const fomattedUrl = projectUrl.startsWith("http") ? projectUrl : `https://${projectUrl}`
+  const projectUrl = project?.url
+  const fomattedUrl = projectUrl?.startsWith("http") ? projectUrl : `https://${projectUrl}`
 
   const handleClick = async () => {
 
-    if(!profileId || !project.id || isOwner) return
+    if(!profileId || !project?.id || isOwner) return
 
-    await increaseProjectsVisit(profileId as string, project.id)
+    await increaseProjectsVisit(profileId as string, project?.id)
   }
 
   return (
@@ -45,9 +49,9 @@ export default function ProjectCard({
             </span>
           )}
           <div className="flex flex-col">
-            <span className="text-white font-bold">{project.name}</span>
+            <span className="text-white font-bold">{name || project?.name}</span>
             <span className="text-content-body text-sm">
-              {project.description}
+              {project?.description || description}
             </span>
           </div>
         </div>
