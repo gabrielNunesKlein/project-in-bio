@@ -2,6 +2,7 @@ import { auth } from "@/app/lib/auth"
 import { db } from "@/app/lib/firebase"
 import stripe from "@/app/lib/stripe"
 import { NextResponse } from "next/server"
+import { trackServerEvent } from "@/app/lib/mixpanel"
 
 export async function POST(req: Request){
     const { metadata, isSubscription } = await req.json()
@@ -53,6 +54,12 @@ export async function POST(req: Request){
         success_url: `${req.headers.get("origin")}/${metadata.profileId}`,
         cancel_url: `${req.headers.get("origin")}/${metadata.profileId}/upgrade`
     })
+
+    trackServerEvent("checkout_created", {
+        userId,
+        price,
+        isSubscription,
+    });
 
     return NextResponse.json({
         sessionId: session.id
