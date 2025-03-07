@@ -54,7 +54,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ profil
             </div>
             {isOwner && (
                 <div className='absolute bottom-4 right-0 left-0 w-min mx-auto'>
-                    <TotalVisit totalVisit={profileData.totalVisit} />
+                    <TotalVisit totalVisit={profileData.totalVisit} showBar={true} />
                 </div>
             )}
         </div>
