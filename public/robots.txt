@@ -1,0 +1,9 @@
+# *
+ 
+ User-agent: *
+ Allow: /
+ 
+ # Host: https://project-in-bio-gamma-vert.vercel.app/
+ 
+ # Sitemap: 
+ Sitemap: https://project-in-bio-gamma-vert.vercel.app/sitemap.xml
